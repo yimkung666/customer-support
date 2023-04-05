@@ -1,0 +1,91 @@
+<div class="d-grid gap-3 p-4 pt-4">
+    <mat-card>
+      <div class="p-4">
+        <mat-card-title>
+          <mat-icon color="primary">bolt</mat-icon> Incident Flow #2
+        </mat-card-title>
+        <mat-card-content class="pb-4">
+          <mat-dialog-content class="mat-typography">
+            <div class="row">
+              <div>
+                <mat-form-field appearance="fill" class="col-md-6 col-sm-12">
+                  <mat-label>Status</mat-label>
+                  <select matNativeControl required>
+                    <option value="Pending">Pending</option>
+                    <option value="Inprogress" selected>Inprogress</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline" class="col-md-6 col-sm-12">
+                  <mat-label>Incident Title</mat-label>
+                  <input
+                    matInput
+                    value="ติดตั้งโปรแกรม"
+                  />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline" class="col-md-12 col-sm-12">
+                  <mat-label>Detail</mat-label>
+                  <textarea
+                    rows="10"
+                    matInput
+                    value="ติดตั้งโปรแกรม ms team"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 col-sm-12 pt-4">
+                <app-date-picker
+                  [title]="'Start Date'"
+                  [inputDate]="startDate"
+                ></app-date-picker>
+                <app-date-picker
+                  [title]="'End Date'"
+                  [inputDate]="endDate"
+                ></app-date-picker>
+              </div>
+  
+              <div class="col-md-6 col-sm-12 pt-4">
+                <app-date-picker
+                  [title]="'Estimate Start Date'"
+                  [inputDate]="estStartDate"
+                ></app-date-picker>
+                <app-date-picker
+                  [title]="'Estimate End Date'"
+                  [inputDate]="estEndDate"
+                ></app-date-picker>
+              </div>
+            </div>
+            <button
+              class="mx-4 mt-4"
+              mat-raised-button
+              color="primary"
+              (click)="onSubmit()"
+            >
+              Save
+            </button>
+          </mat-dialog-content>
+        </mat-card-content>
+      </div>
+  
+      <mat-card-footer>
+        <mat-progress-bar
+          mode="indeterminate"
+          *ngIf="displayProgressSpinner"
+        ></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  
+  <app-progress-spinner
+    class=""
+    color="primary"
+    mode="indeterminate"
+    [backdropEnabled]="true"
+    [positionGloballyCenter]="true"
+    [displayProgressSpinner]="displayProgressSpinner"
+  >
+  </app-progress-spinner>
+  

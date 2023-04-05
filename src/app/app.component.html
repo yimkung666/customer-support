@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" *ngIf="!isHideNav; else templateWithoutMenu;">
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" fxHide fxShow.lt-md>
+      <mat-icon class="hamburger">menu</mat-icon>
+  </button>
+  <span class="header-toolbar"> 
+      Customer support
+  </span>
+  <span class="spacer"></span> 
+</mat-toolbar>
+<mat-sidenav-container class="a-container" autosize *ngIf="!isHideNav">
+  <mat-sidenav #sidenav mode="side" [opened]="opened">
+      <mat-nav-list>
+          <app-menu-list-item *ngFor="let item of menu" [item]="item"></app-menu-list-item>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<ng-template #templateWithoutMenu>
+  <router-outlet></router-outlet>
+</ng-template>
